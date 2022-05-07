@@ -12,4 +12,4 @@ prompt_dir() {
   prompt_segment blue $CURRENT_FG "$(shrink_path -f -g)"
 }
 
-RPROMPT='%F{8}%n@%m $(date +%T)%F{white}'
+RPROMPT=$'%{\e[2m%}%n@%m $(date +%T)%{\e[0m%}'

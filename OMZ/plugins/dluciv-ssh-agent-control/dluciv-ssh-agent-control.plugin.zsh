@@ -73,7 +73,7 @@ function sshagnt {
 }
 
 # Load SSH agent on start
-
+# Usage: zstyle :omz:plugins:dluciv-ssh-agent-control autostart yes
 if zstyle -t :omz:plugins:dluciv-ssh-agent-control autostart; then
   _ssh-agent_start
 fi

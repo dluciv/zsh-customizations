@@ -72,6 +72,12 @@ function sshagnt {
   esac
 }
 
+# Load SSH agent on start
+
+if zstyle -t :omz:plugins:dluciv-ssh-agent-control autostart; then
+  _ssh-agent_start
+fi
+
 # ZSH completion for CLI
 
 _sshagnt () {

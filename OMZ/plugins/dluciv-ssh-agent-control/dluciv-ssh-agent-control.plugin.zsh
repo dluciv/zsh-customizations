@@ -76,6 +76,9 @@ function sshagnt {
 # Usage: zstyle :omz:plugins:dluciv-ssh-agent-control autostart yes
 if zstyle -t :omz:plugins:dluciv-ssh-agent-control autostart; then
   _ssh-agent_start
+else
+  # load vars if agent is running
+  _ssh-agent_detect >/dev/null
 fi
 
 # ZSH completion for CLI

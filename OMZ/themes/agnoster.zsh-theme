@@ -13,4 +13,4 @@ prompt_dir() {
   prompt_segment blue $CURRENT_FG "$(shrink_path -f -g)"
 }
 
-RPROMPT=$'%{\e[2m%}%n@%m $(battery_pct_prompt) $(date +%T)%{\e[0m%}'
+RPROMPT=$'%{\e[2m%}%n@%m $(date +%T) $(battery_pct_prompt)%{\e[0m%}'

@@ -1,6 +1,7 @@
 . $ZSH/themes/agnoster.zsh-theme
 
 omz plugin load shrink-path
+omz plugin load battery
 
 prompt_context() {
  prompt_segment black default ''
@@ -12,4 +13,4 @@ prompt_dir() {
   prompt_segment blue $CURRENT_FG "$(shrink_path -f -g)"
 }
 
-RPROMPT=$'%{\e[2m%}%n@%m $(date +%T)%{\e[0m%}'
+RPROMPT=$'%{\e[2m%}%n@%m $(battery_pct_prompt) $(date +%T)%{\e[0m%}'

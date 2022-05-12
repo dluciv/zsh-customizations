@@ -1,6 +1,4 @@
 case $OSTYPE in
-  linux-gnu*)
-  ;;
   linux-android*)
     function upgrade () {
       pkg upgrade
@@ -19,5 +17,21 @@ case $OSTYPE in
       apt-cyg dist-upgrade
     }
   ;;
-esac
+  *) # linux-gnu* and others with upgrade defined
+    if [[ -n "${aliases[upgrade]}" ]]; then
+      alias omz_plug_upgrade=${aliases[upgrade]}
+      unalias upgrade
+    elif [[ -n "${functions[upgrade]}" ]]; then
+      functions[omz_plug_upgrade]=${functions[upgrade]}
+      unfunction upgrade
+    else
+      echo noup11
+      alias omz_plug_upgrade='echo No idea how to perform global upgrade'
+    fi
 
+    function upgrade () {
+      omz_plug_upgrade
+      omz update
+    }
+  ;;
+esac

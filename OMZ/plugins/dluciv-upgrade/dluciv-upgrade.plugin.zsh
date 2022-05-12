@@ -25,7 +25,7 @@ case $OSTYPE in
       functions[omz_plug_upgrade]=${functions[upgrade]}
       unfunction upgrade
     else
-      echo noup11
+      echo "Use plugin defining some upgrade method before"
       alias omz_plug_upgrade='echo No idea how to perform global upgrade'
     fi
 

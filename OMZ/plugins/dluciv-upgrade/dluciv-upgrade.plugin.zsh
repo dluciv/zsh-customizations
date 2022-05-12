@@ -19,18 +19,18 @@ case $OSTYPE in
   ;;
   *) # linux-gnu* and others with upgrade defined
     if [[ -n "${aliases[upgrade]}" ]]; then
-      alias omz_plug_upgrade=${aliases[upgrade]}
+      omz_plug_upgrade_v=${aliases[upgrade]}
       unalias upgrade
     elif [[ -n "${functions[upgrade]}" ]]; then
-      functions[omz_plug_upgrade]=${functions[upgrade]}
+      omz_plug_upgrade_v=${functions[upgrade]}
       unfunction upgrade
     else
       echo "Use plugin defining some upgrade method before"
-      alias omz_plug_upgrade='echo No idea how to perform global upgrade'
+      omz_plug_upgrade_v='echo No idea how to perform global upgrade'
     fi
 
     function upgrade () {
-      omz_plug_upgrade
+      eval $omz_plug_upgrade_v
       omz update
     }
   ;;

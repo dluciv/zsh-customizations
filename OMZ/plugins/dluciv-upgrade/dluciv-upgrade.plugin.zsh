@@ -34,7 +34,10 @@ case $OSTYPE in
         omz update
       }
     else
-      echo "Use plugin defining some upgrade method before"
+      echo "Use plugin defining some upgrade method before. Only upgrading OMZ..."
+      function upgrade () {
+        omz update
+      }
     fi
   ;;
 esac

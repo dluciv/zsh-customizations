@@ -19,19 +19,22 @@ case $OSTYPE in
   ;;
   *) # linux-gnu* and others with upgrade defined
     if [[ -n "${aliases[upgrade]}" ]]; then
-      omz_plug_upgrade_v=${aliases[upgrade]}
+      function _dluciv_upgrade () {
+        upgrade
+        omz update
+      }
+      # upgrade alias already substituted to function, so...
       unalias upgrade
+      functions[upgrade]=$functions[_dluciv_upgrade]
+      unfunction _dluciv_upgrade
     elif [[ -n "${functions[upgrade]}" ]]; then
-      omz_plug_upgrade_v=${functions[upgrade]}
-      unfunction upgrade
+      functions[_omz_plug_upgrade]=${functions[upgrade]}
+      function upgrade () {
+        _omz_plug_upgrade
+        omz update
+      }
     else
       echo "Use plugin defining some upgrade method before"
-      omz_plug_upgrade_v='echo No idea how to perform global upgrade'
     fi
-
-    function upgrade () {
-      eval $omz_plug_upgrade_v
-      omz update
-    }
   ;;
 esac

@@ -5,7 +5,7 @@ function cust-update () {
   local _rv=0
   if git remote &>/dev/null; then
     git stash &>/dev/null
-    git pull
+    git pull --verbose --all --tags --rebase
     _rv=$?
     git stash pop &>/dev/null
   else

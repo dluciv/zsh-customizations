@@ -10,8 +10,16 @@ if ! which open &>/dev/null; then
         fi
       }
     ;;
-    cygwin*|msys*)
-      alias open='cmd /c start'
+    cygwin*)
+      alias open=cygstart
+    ;;
+    msys*)
+      alias open=start
+    ;;
+    win32)  # Will not likely happen
+      function open () {
+        cmd /c start "${@//&/^&}"
+      }
     ;;
     linux-gnu*)
       alias open='xdg-open'

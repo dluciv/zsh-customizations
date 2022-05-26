@@ -2,13 +2,7 @@ if ! which open &>/dev/null; then
 
   case $OSTYPE in
     linux-android*)
-      function open () {
-        if [[ "$1" =~ .*://.* ]]; then
-          termux-open-url $*
-        else
-          termux-open $*
-        fi
-      }
+      alias open=termux-open
     ;;
     cygwin*)
       alias open=cygstart

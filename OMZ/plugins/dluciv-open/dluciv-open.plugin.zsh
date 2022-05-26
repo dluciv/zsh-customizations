@@ -12,10 +12,8 @@ else
         fi
       }
     ;;
-    cygwin)
-      function open () {
-        start $*
-      }
+    cygwin*|msys*)
+      alias open='cmd /c start'
     ;;
     linux-gnu*)
       alias open='xdg-open'

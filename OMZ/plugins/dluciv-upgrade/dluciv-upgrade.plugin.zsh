@@ -37,7 +37,7 @@ else
         brew upgrade --greedy
       }
     ;;
-    cygwin)
+    cygwin*)
       function host-upgrade () {
         apt-cyg upgrade-self
         apt-cyg dist-upgrade

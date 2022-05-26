@@ -1,4 +1,4 @@
-if [[ -n "${aliases[open]}" ]] || [[ -n "${functions[open]}" ]] || command -v open; then
+if which open &>/dev/null; then
   # Already having some open defined
 else
 

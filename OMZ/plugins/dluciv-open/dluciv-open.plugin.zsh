@@ -1,6 +1,4 @@
-if which open &>/dev/null; then
-  # Already having some open defined
-else
+if ! which open &>/dev/null; then
 
   case $OSTYPE in
     linux-android*)
@@ -21,4 +19,3 @@ else
   esac
 
 fi
-

@@ -1,11 +1,13 @@
 . $ZSH/themes/agnoster.zsh-theme
 
 omz plugin load shrink-path
-omz plugin load battery
 
 prompt_context() {
  prompt_segment black default ''
 }
+
+# battery
+. ${${(%):-%x}:h}/common.zsh
 
 # https://shandou.medium.com/how-to-shorten-zsh-prompt-oh-my-zsh-14185f3e7ab7
 prompt_dir() {
@@ -13,4 +15,4 @@ prompt_dir() {
   prompt_segment blue $CURRENT_FG "$(shrink_path -f -g)"
 }
 
-RPROMPT=$'%{\e[$color[faint]m%}%n@%m $(date +%T) $(battery_pct_prompt)%{\e[$color[none]m%}'
+RPROMPT=$'%{\e[$color[faint]m%}%n@%m $(date +%T) $(_batt_p_pct)%{\e[$color[none]m%}'

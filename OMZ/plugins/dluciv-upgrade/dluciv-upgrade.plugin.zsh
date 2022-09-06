@@ -20,7 +20,9 @@ function scoop-update () {
   if which scoop &> /dev/null; then
     scoop update
     for app in $(ls -1 $USERPROFILE/scoop/apps); do
-      scoop update $app
+      if [[ scoop != $app ]]; then
+        scoop update $app
+      fi
     done
   else
     return 1

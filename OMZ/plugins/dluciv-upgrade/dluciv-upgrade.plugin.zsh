@@ -16,6 +16,17 @@ function cust-update () {
   return $_rv
 }
 
+function scoop-update () {
+  if which scoop &> /dev/null; then
+    scoop update
+    for app in $(ls -1 $USERPROFILE/scoop/apps); do
+      scoop update $app
+    done
+  else
+    return 1
+  fi
+}
+
 if [[ -n "${aliases[upgrade]}" ]]; then
   function host-upgrade () {
     upgrade
@@ -39,6 +50,7 @@ else
     ;;
     cygwin*)
       function host-upgrade () {
+        scoop-update
         apt-cyg upgrade-self
         apt-cyg dist-upgrade
       }

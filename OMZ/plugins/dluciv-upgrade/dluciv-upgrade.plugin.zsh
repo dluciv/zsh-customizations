@@ -1,4 +1,4 @@
-function cust-update () {
+function _cust-update () {
   local _updpl_curpath=${(%):-%x}
   pushd ${_updpl_curpath:A:h} >/dev/null
   echo "Updading ZSH customizations in $(pwd)"
@@ -16,7 +16,7 @@ function cust-update () {
   return $_rv
 }
 
-function scoop-update () {
+function _scoop-update () {
   if which scoop &> /dev/null; then
     scoop update
     for app in $(ls -1 $USERPROFILE/scoop/apps); do
@@ -41,24 +41,24 @@ elif [[ -n "${functions[upgrade]}" ]]; then
 else
   case $OSTYPE in
     linux-android*)
-      function host-upgrade () {
+      function _host-upgrade () {
         pkg upgrade
       }
     ;;
     darwin*)
-      function host-upgrade () {
+      function _host-upgrade () {
         brew upgrade --greedy
       }
     ;;
     cygwin*)
-      function host-upgrade () {
-        scoop-update
+      function _host-upgrade () {
+        _scoop-update
         apt-cyg upgrade-self
         apt-cyg dist-upgrade
       }
     ;;
     *) # linux-gnu* and others with upgrade defined
-      function host-upgrade () {
+      function _host-upgrade () {
         echo "Use plugin defining some upgrade method before. No host-upgrade supported..."
       }
     ;;
@@ -66,7 +66,7 @@ esac
 fi
 
 function upgrade () {
-  cust-update
+  _cust-update
   omz update --unattended
-  host-upgrade
+  _host-upgrade
 }

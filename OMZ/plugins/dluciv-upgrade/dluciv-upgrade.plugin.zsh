@@ -30,13 +30,13 @@ function _scoop-update () {
 }
 
 if [[ -n "${aliases[upgrade]}" ]]; then
-  function host-upgrade () {
+  function _host-upgrade () {
     upgrade
   }
   # upgrade alias already substituted to function, so...
   unalias upgrade
 elif [[ -n "${functions[upgrade]}" ]]; then
-  functions[host-upgrade]=${functions[upgrade]}
+  functions[_host-upgrade]=${functions[upgrade]}
   unfunction upgrade
 else
   case $OSTYPE in

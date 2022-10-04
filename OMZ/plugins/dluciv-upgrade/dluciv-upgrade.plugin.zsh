@@ -65,6 +65,15 @@ else
 esac
 fi
 
+function upyay () {
+  # https://github.com/Jguer/yay/issues/848#issuecomment-1068952668
+  echo '====== Upgrading AUR packages optimistically ========'
+  yay -Quq --aur | xargs -n 1 yay -S --noconfirm
+  echo '========== AUR packages failed to upgrade ==========='
+  yay -Quq --aur
+  echo '====================================================='
+}
+
 function upgrade () {
   _cust-update
   omz update --unattended

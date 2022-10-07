@@ -76,6 +76,9 @@ function _timeout-yay () {
 function upyay () {
   # https://github.com/Jguer/yay/issues/848#issuecomment-1068952668
   TIMEOUT=$1
+  echo '== Sudo... =='
+  # Just to ask it beforehands
+  sudo true
   echo "== Upgrading AUR packages optimistically, t/o: ($TIMEOUT) =="
   yay -Quq --aur | while read pkg; do
     _timeout-yay $pkg $TIMEOUT

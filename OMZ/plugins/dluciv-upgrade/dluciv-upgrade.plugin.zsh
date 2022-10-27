@@ -73,7 +73,7 @@ function _timeout-yay () {
   fi
 }
 
-function upyay () {
+function _upyay_greedy () {
   # https://github.com/Jguer/yay/issues/848#issuecomment-1068952668
   TIMEOUT=$1
   echo '== Sudo... =='
@@ -88,6 +88,11 @@ function upyay () {
   yay -Quq --aur
   echo '====================================================='
 }
+
+if [[ -f /etc/arch-release ]]; then
+  # Arch Linux
+  alias upgrade-src-greedy=_upyay_greedy
+fi
 
 function upgrade () {
   _cust-update

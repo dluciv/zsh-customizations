@@ -10,7 +10,7 @@ function _cust-update () {
     git stash pop &>/dev/null
   else
     _rv=$?
-    echo "ZSH customizations are likely not in Git with remotes"
+    >&2 echo "ZSH customizations are likely not in Git with remotes"
   fi
   popd >/dev/null
   return $_rv
@@ -59,7 +59,7 @@ else
     ;;
     *) # linux-gnu* and others with upgrade defined
       function _host-upgrade () {
-        echo "Use plugin defining some upgrade method before. No host-upgrade supported..."
+        >&2 echo "Use plugin defining some upgrade method before. No host-upgrade supported..."
       }
     ;;
 esac
@@ -89,9 +89,13 @@ function _upyay_greedy () {
   echo '====================================================='
 }
 
-if [[ -f /etc/arch-release ]]; then
-  # Arch Linux
+if [[ -f /etc/arch-release ]] && which yay &>/dev/null; then
+  # Arch Linux with yay
   alias upgrade-src-greedy=_upyay_greedy
+else
+  function upgrade-src-greedy() {
+    >&2 echo "Do not know how to upgrade src packages greedy on you host..."
+  }
 fi
 
 function upgrade () {

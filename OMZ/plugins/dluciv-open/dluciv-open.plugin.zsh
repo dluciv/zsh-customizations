@@ -16,7 +16,9 @@ if ! which open &>/dev/null; then
       }
     ;;
     linux-gnu*)
-      alias open='xdg-open'
+      function open () {
+        xdg-open "$@" &|
+      }
     ;;
   esac
 

@@ -20,5 +20,5 @@ if [[ $OSTYPE == cygwin* ]]; then
   }
 
 else
-  >&2 echo "Cygwin upgrade plugin cannot be used with OS '$OSTYPE' OS"
+  >&2 echo "Cygwin upgrade plugin cannot be used with '$OSTYPE' OS"
 fi

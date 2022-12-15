@@ -1,5 +1,5 @@
 #######################################
-#               Pacman                #
+#                XBPS                 #
 #######################################
 
 # XBPS - Pacman - https://docs.voidlinux.org/xbps/index.html

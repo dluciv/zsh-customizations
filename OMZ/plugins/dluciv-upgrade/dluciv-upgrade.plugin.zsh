@@ -45,11 +45,6 @@ else
         pkg upgrade
       }
     ;;
-    darwin*)
-      function _host-upgrade () {
-        brew upgrade --greedy
-      }
-    ;;
     *) # linux-gnu* and others with upgrade defined
       function _host-upgrade () {
         >&2 echo "Use plugin defining some upgrade method before. No host-upgrade supported..."

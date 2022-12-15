@@ -50,13 +50,6 @@ else
         brew upgrade --greedy
       }
     ;;
-    cygwin*)
-      function _host-upgrade () {
-        _scoop-update
-        apt-cyg upgrade-self
-        apt-cyg dist-upgrade
-      }
-    ;;
     *) # linux-gnu* and others with upgrade defined
       function _host-upgrade () {
         >&2 echo "Use plugin defining some upgrade method before. No host-upgrade supported..."

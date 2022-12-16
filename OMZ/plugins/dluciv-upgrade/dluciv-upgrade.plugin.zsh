@@ -26,18 +26,9 @@ elif [[ -n "${functions[upgrade]}" ]]; then
   functions[_host-upgrade]=${functions[upgrade]}
   unfunction upgrade
 else
-  case $OSTYPE in
-    linux-android*)
-      function _host-upgrade () {
-        pkg upgrade
-      }
-    ;;
-    *) # linux-gnu* and others with upgrade defined
-      function _host-upgrade () {
-        >&2 echo "Use plugin defining some upgrade method before. No host-upgrade supported..."
-      }
-    ;;
-  esac
+  function _host-upgrade () {
+    >&2 echo "Use plugin defining some upgrade method before. No host-upgrade supported..."
+  }
 fi
 
 function upgrade () {

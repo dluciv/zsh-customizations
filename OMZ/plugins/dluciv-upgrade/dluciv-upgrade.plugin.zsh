@@ -31,8 +31,16 @@ else
   }
 fi
 
+function _omz-update () {
+  if ( cd $ZSH; git status &>/dev/null ); then
+    omz update --unattended
+  else
+    echo "OMZ is installed to $ZSH, to be updated by system"
+  fi
+}
+
 function upgrade () {
   _cust-update
-  omz update --unattended
+  _omz-update
   _host-upgrade
 }

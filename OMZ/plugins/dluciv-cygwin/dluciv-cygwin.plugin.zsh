@@ -14,9 +14,9 @@ if [[ $OSTYPE == cygwin* ]]; then
   }
 
   function upgrade () {
+    _scoop-update
     apt-cyg upgrade-self
     apt-cyg dist-upgrade
-    _scoop-update
   }
 
 else

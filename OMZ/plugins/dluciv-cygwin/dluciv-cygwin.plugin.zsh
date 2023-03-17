@@ -1,20 +1,10 @@
 if [[ $OSTYPE == cygwin* ]]; then
 
-  function _scoop-update () {
-    if which scoop &> /dev/null; then
-      scoop update
-      for app in $(ls -1 $USERPROFILE/scoop/apps); do
-        if [[ scoop != $app ]]; then
-          scoop update $app
-        fi
-      done
-    else
-      return 1
-    fi
-  }
-
   function upgrade () {
-    _scoop-update
+    if which _windows-pms-upgrade &> /dev/null; then
+      echo "Upgrading Windows package managers"
+      _windows-pms-upgrade
+    fi
     apt-cyg upgrade-self
     apt-cyg dist-upgrade
   }

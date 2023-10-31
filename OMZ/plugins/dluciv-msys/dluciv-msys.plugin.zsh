@@ -2,7 +2,7 @@ if [[ $OSTYPE == msys* ]]; then
 
   function upgrade () {
     pacman -Syyu
-    pacman -Scc
+    echo -e 'y\ny' | /usr/bin/pacman -Scc
   }
 
 else

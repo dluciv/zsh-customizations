@@ -1,10 +1,15 @@
 function _scoop-update () {
   scoop update
-  for app in $(ls -1 $USERPROFILE/scoop/apps); do
-    if [[ scoop != $app ]]; then
-      scoop update $app
-    fi
-  done
+  if true; then
+    scoop update -a -f
+  else
+    # older
+    for app in $(ls -1 $USERPROFILE/scoop/apps); do
+      if [[ scoop != $app ]]; then
+        scoop update $app
+      fi
+    done
+  fi
 }
 
 function _windows-pms-upgrade () {

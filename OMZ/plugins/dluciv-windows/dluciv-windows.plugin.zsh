@@ -1,8 +1,8 @@
 function _scoop-update () {
   scoop update
   if true; then
-    scoop update *
-    scoop cleanup -k *
+    scoop update '*'
+    scoop cleanup -k '*'
   else
     # older
     for app in $(ls -1 $USERPROFILE/scoop/apps); do

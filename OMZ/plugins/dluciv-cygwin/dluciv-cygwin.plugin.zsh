@@ -5,8 +5,8 @@ if [[ $OSTYPE == cygwin* ]]; then
       echo "Upgrading Windows package managers"
       _windows-pms-upgrade
     fi
-    apt-cyg upgrade-self
-    apt-cyg dist-upgrade
+    apt-cyg -X upgrade-self
+    apt-cyg -X dist-upgrade
   }
 
 else

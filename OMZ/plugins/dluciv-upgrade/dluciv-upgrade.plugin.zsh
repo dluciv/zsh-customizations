@@ -48,6 +48,6 @@ function upgrade () {
     $uf
   done
 
-  "Upgrade: original OMZ system upgrade"
+  echo "Upgrade: original OMZ system upgrade"
   _host-upgrade_
 }

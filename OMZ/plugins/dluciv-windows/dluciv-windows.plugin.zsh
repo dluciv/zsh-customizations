@@ -1,15 +1,14 @@
 function _scoop-update () {
   scoop update
-  if true; then
-    scoop update '*'
-    scoop cleanup -k '*'
-  else
-    # older
-    for app in $(ls -1 $USERPROFILE/scoop/apps); do
-      if [[ scoop != $app ]]; then
-        scoop update $app
-      fi
-    done
+  scoop update '*'
+  scoop cleanup -k '*'
+
+  if false; then
+    if which sudo.exe &> /dev/null; then
+      sudo scoop update
+      sudo scoop update '*'
+      sudo scoop cleanup -k '*'
+    fi
   fi
 }
 

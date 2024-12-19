@@ -5,9 +5,9 @@ function _scoop-update () {
 
   if false; then
     if which sudo.exe &> /dev/null; then
-      sudo scoop update
-      sudo scoop update '*'
-      sudo scoop cleanup -k '*'
+      sudo --inline scoop update
+      sudo --inline scoop update '*'
+      sudo --inline scoop cleanup -k '*'
     fi
   fi
 }

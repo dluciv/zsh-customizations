@@ -1,14 +1,12 @@
 function _scoop-update () {
-  scoop update
-  scoop update '*'
-  scoop cleanup -k '*'
-
-  if false; then
-    if which sudo.exe &> /dev/null; then
-      sudo --inline scoop update
-      sudo --inline scoop update '*'
-      sudo --inline scoop cleanup -k '*'
-    fi
+  # Could not get Windows 11 sudo to wait for finish,
+  # used this tool https://github.com/gerardog/gsudo then.
+  if which gsudo.exe &> /dev/null; then
+    gsudo.exe 'scoop update & scoop update * & scoop cleanup -k *'
+  else
+    scoop update
+    scoop update '*'
+    scoop cleanup -k '*'
   fi
 }
 

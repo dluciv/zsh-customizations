@@ -34,7 +34,7 @@ fi
 
 function __omz-upgrade__ () {
   if ( cd $ZSH; git status &>/dev/null ); then
-    omz update --unattended
+    "$ZSH/tools/upgrade.sh"
   else
     echo "OMZ is installed to $ZSH, to be updated by system"
   fi

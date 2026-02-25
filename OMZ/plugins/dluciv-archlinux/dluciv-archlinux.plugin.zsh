@@ -14,6 +14,10 @@ if [[ -f /etc/arch-release ]] && which yay &>/dev/null; then
   function _upyay_greedy () {
     # https://github.com/Jguer/yay/issues/848#issuecomment-1068952668
     TIMEOUT=$1
+    echo '============== AUR packages to upgrade =============='
+    yay -Quq --aur
+    echo '====================================================='
+    sleep 5
     echo '== Sudo... =='
     # Just to ask it beforehands
     sudo true

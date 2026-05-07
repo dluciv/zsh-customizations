@@ -1,6 +1,6 @@
 if [[ $OSTYPE == darwin* ]]; then
-  if command -v zb &>/dev/null; then
-    alias upgrade='zb upgrade'
+  if false && command -v zb &>/dev/null; then
+    alias upgrade='zb update'
   else
     alias upgrade='brew upgrade --greedy'
   fi

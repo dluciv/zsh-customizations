@@ -10,8 +10,8 @@ if [[ $OSTYPE == darwin* ]]; then
 	if command -v brew &>/dev/null; then
 	    brew upgrade --greedy
 	fi
-	alias upgrade='brews_upgrade'
     }
+    alias upgrade='brews_upgrade'
 else
     >&2 echo "Darwin upgrade plugin cannot be used with '$OSTYPE' OS"
 fi

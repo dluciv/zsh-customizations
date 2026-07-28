@@ -1,25 +1,37 @@
-if ! which open &>/dev/null; then
+if ! command -v open &>/dev/null; then
 
-  case $OSTYPE in
+  case "$OSTYPE" in
     linux-android*)
-      alias open=termux-open
+      function __open_one () { termux-open "$1"; }
     ;;
     cygwin*)
-      alias open=cygstart
+      function __open_one () { cygstart "$1"; }
     ;;
     msys*)
-      alias open=start
+      function __open_one () { start "$1"; }
     ;;
-    win32)  # Will not likely happen
-      function open () {
-        cmd /c start "${@//&/^&}"
-      }
+    win32)
+      function __open_one () { cmd /c start "${1//&/^&}"; }
     ;;
     linux-gnu*)
-      function open () {
-        xdg-open "$@" &|
-      }
+      function __open_one () { xdg-open "$1" >/dev/null 2>&1 &|; }
+    ;;
+    *)
+      function __open_one () { echo "OS not supported, canot open <<$1>>"; return 1; }
     ;;
   esac
+
+  function open () {
+    local rpf
+    for a in "$@"; do
+
+      if [[ "$a" =~ ^[a-z]+:// ]]; then
+        __open_one "$a"
+      else
+        rpf=$(realpath "$a" 2>/dev/null) || rpf="$a"
+        __open_one "$rpf"
+      fi
+    done
+  }
 
 fi
